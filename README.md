@@ -4,12 +4,12 @@ Este projeto é uma implementação de um sistema especialista em Prolog para av
 
 ## Estrutura do Projeto
 
-- `src/main.pl`: Contém a lógica principal do sistema, incluindo a interface de menu e a entrada dinâmica de dados.
+- `src/sistema_especialista.pl`: Contém a lógica principal do sistema, incluindo a interface de menu e a entrada dinâmica de dados.
 - `src/regras.pl`: Contém as regras de classificação baseadas nos dados de consumo e histórico.
 
 ## Arquivos
 
-### `main.pl`
+### `sistema_especialista.pl`
 
 Este arquivo define a interface do usuário e a lógica para entrada de dados e avaliação.
 
@@ -29,9 +29,9 @@ Este arquivo contém as regras de classificação diretamente baseadas na tabela
 ## Como Executar
 
 1. Certifique-se de ter o SWI-Prolog instalado.
-2. Carregue o arquivo `main.pl` no SWI-Prolog:
+2. Carregue o arquivo `sistema_especialista.pl` no SWI-Prolog:
    ```prolog
-   ?- [main].
+   ?- [sistema_especialista].
    ```
 3. Inicie o sistema:
    ```prolog

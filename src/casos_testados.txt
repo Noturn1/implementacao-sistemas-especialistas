@@ -6,6 +6,7 @@ Histórico: 200 kWh e 210 kWh
 resultado esperado: "Diagnóstico: Perda técnica por subtensao na UC (problema de transformacao ou quedas de tensao na rede)."
 resultado obtido: "Diagnóstico: Perda técnica por subtensao na UC (problema de transformacao ou quedas de tensao na rede)."
 -----------------------------
+
 Consumo_atual: 230 kWh
 Tensao_medida: 137 V
 Corrente_medida: 2 A
@@ -14,6 +15,7 @@ Histórico: 200 kWh e 210 kWh
 resultado esperado: "Diagnóstico: Perda técnica por sobretensao na UC (problema de transformacao ou sobretensao na rede)."
 resultado obtido: "Diagnóstico: Perda técnica por sobretensao na UC (problema de transformacao ou sobretensao na rede)."
 -----------------------------
+
 Consumo_atual: 230 kWh
 Tensao_medida: 125 V
 Corrente_medida: 4 A
@@ -21,6 +23,7 @@ Histórico: 200 kWh e 210 kWh
 
 resultado esperado: "Diagnóstico: Perda tecnica por efeito Joule (sobrecarga)."
 resultado obtido: "Diagnóstico: Perda tecnica por efeito Joule (sobrecarga)."
+-----------------------------
 
 Consumo_atual: 320 kWh
 Tensao_medida: 125 V
