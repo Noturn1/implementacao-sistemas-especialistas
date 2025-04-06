@@ -53,3 +53,5 @@ Consumo_atual: 150 kWh
 Tensao_medida: 125 V
 Corrente_medida: 2 A
 Histórico: 200 kWh e 210 kWh
+
+com problemas em casos técnicos
