@@ -55,3 +55,97 @@ Corrente_medida: 2 A
 Histórico: 200 kWh e 210 kWh
 
 com problemas em casos técnicos
+
+
+-- NOVO CASO DE TESTES -- 
+
+Dic: 
+CA - Consumo atual
+TM - Tensão medida
+CM - Corrente medida
+Hist - Histórico
+
+-- Problemas perdas técnicas
+
+Tipo de problema (resultado esperado): Efeito Joule
+
+Caso de teste:
+CA: 420  
+TM: 127
+CM: 6
+Hist: 300, 310
+
+Resultado obtido: Efeito Joule
+
+-- 
+
+Tipo de problema (resultado esperado): Queda de tensão 
+
+Caso de teste:
+CA: 410  
+TM: 112
+CM: 6.2
+Hist: 320, 330
+
+Resultado obtido: Queda de tensão 
+
+
+-- 
+
+Tipo de problema (resultado esperado): Sobretensão 
+
+Caso de teste:
+CA: 390  
+TM: 134
+CM: 2.1
+Hist: 320, 330
+
+Resultado obtido: Sobretensão 
+
+-- 
+
+Tipo de problema (resultado esperado): 
+
+Caso de teste:
+CA: 390  
+TM: 134
+CM: 2.1
+Hist: 320, 330
+
+Resultado obtido: Sobretensão 
+
+-- Problemas perdas não técnicas
+
+Tipo de problema (resultado esperado): Erro de medição de corrente 
+
+Caso de teste:
+CA: 300  
+TM: 127
+CM: 5
+Hist: 290, 310
+
+Resultado obtido: Erro de medição de corrente 
+
+--
+
+Tipo de problema (resultado esperado): Tensão crítica
+
+Caso de teste:
+CA: 320  
+TM: 109
+CM: 3.5
+Hist: 310, 315
+
+Resultado obtido: Erro de medição de tensão 
+
+--
+
+Tipo de problema (resultado esperado): Bypass medidor
+
+Caso de teste:
+CA: 50  
+TM: 127
+CM: 3.3
+Hist: 250, 249
+
+Resultado obtido: Bypass medidor

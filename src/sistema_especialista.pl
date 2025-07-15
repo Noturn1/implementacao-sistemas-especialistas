@@ -26,29 +26,6 @@ tensao_status(V, precaria_superior) :- V > 133, V =< 135.
 tensao_status(V, critica_inferior) :- V < 110.
 tensao_status(V, critica_superior) :- V > 135.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Cálculos Processados
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Consumo_medio: média dos dois consumos históricos (ano-2 e ano-1)
-compute_consumo_medio(Medio) :-
-    consumo_hist(ConsumoAno2, ConsumoAno1),
-    Medio is (ConsumoAno2 + ConsumoAno1) / 2.
-
-% Consumo_estimado: usando regressão linear simples (reta definida por dois pontos)
-% Para dois pontos, a inclinação é (ConsumoAno1 - ConsumoAno2) e a estimativa para o mês atual:
-% Estimado = ConsumoAno1 + (ConsumoAno1 - ConsumoAno2)
-compute_consumo_estimado(Estimado) :-
-    consumo_hist(ConsumoAno2, ConsumoAno1),
-    Estimado is 2 * ConsumoAno1 - ConsumoAno2.
-
-% Corrente_media_atual:
-% Fórmula: ((Consumo_atual * 1000 / 30 dias) / 24 horas) / (Tensão_atendimento * Fator_Potencia)
-compute_corrente_media_atual(CorrenteMedia) :-
-    consumo_atual(Consumo),
-    tensao_atendimento(TA),
-    fator_potencia(FP),
-    CorrenteMedia is ((Consumo * 1000 / 30) / 24) / (TA * FP).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Predicado de Avaliação
@@ -65,14 +42,13 @@ avaliar :-
          ; write('Diagnostico: Possivel perda tecnica, mas sem indicacao especifica.'), nl
          )
     ; possivel_perda_nao_tecnica ->
-         ( erro_medicao_corrente ->
-               write('Diagnostico: Perda não técnica = Possivel erro de medicao de corrente.'), nl
+         ( 
+          possivel_desvio_energia ->
+             write('Diagnostico: Perda não técnica = Possivel desvio de energia (by-pass do medidor).'), nl
          ; erro_medicao_tensao ->
-               write('Diagnostico: Perda não técnica = Possivel erro de medicao de tensao.'), nl
-         ; possivel_desvio_energia ->
-               write('Diagnostico: Perda não técnica = Possivel desvio de energia (by-pass do medidor).'), nl
-         ; possivel_fraude_medicao ->
-               write('Diagnostico: Perda não técnica = Possivel fraude na medicao.'), nl
+             write('Diagnostico: Perda não técnica = Possivel erro de medicao de tensao.'), nl
+         ; erro_medicao_corrente ->
+               write('Diagnostico: Perda não técnica = Possivel erro de medicao de corrente.'), nl
          ; write('Diagnostico: Consumo normal sem indicios de perda nao-tecnica.'), nl
          )
     ; write('Situacao regular (de acordo com as regras definidas.)'), nl.
@@ -115,4 +91,5 @@ menu_opcao :-
     (Resp = s -> menu ; write('Encerrando o sistema.'), nl).
 
 start :-
-    menu.
+    menu,
+        
